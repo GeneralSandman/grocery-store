@@ -1,4 +1,6 @@
 * [⚡  **分类简介**]()
-* [⚡  **LeetCode全集（持续更新）**]()
+* [⚡  **LeetCode全集（持续更新）**](grocery-algorithm/LeetCode/README.md)
 * [🧠  **剑指Offer（专项突击版）**]()
-* [👀  **PAT甲级（持续更新）**]()
+   * [- 个人题解](grocery-algorithm/剑指Offer/个人题解/README.md)
+   * [- 题目介绍与官方题解](grocery-algorithm/剑指Offer/题目介绍与官方题解/README.md)
+* [👀  **PAT甲级（持续更新）**](grocery-algorithm/PAT甲级/README.md)
