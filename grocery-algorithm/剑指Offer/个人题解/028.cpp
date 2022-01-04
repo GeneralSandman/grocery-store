@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -18,33 +19,46 @@ class Solution {
 public:
     Node* flatten(Node* head) {
         if(head == nullptr) {
-            return head;
+            return nullptr;
         }
+
+
+        queue<Node*> accessPath;
+        helper(head, accessPath);
+
+        Node* result = nullptr;
 
         Node* pre = nullptr;
-        
-        stack<Node*> accessPath;
-        accessPath.push(head);
         while(!accessPath.empty()) {
+            Node* tmp = accessPath.front();
+            tmp->prev = pre;
+            tmp->child = nullptr;
+            tmp->next = nullptr;
 
-            auto top = accessPath.top();
-            cout << top->val << endl;
+            if(pre == nullptr) {
+                result = tmp;
+            } else {
+                pre->next = tmp;
+            }
+            pre = tmp;
             accessPath.pop();
-
-            if(top->next != nullptr) {
-                accessPath.push(top->next);
-            }
-
-            if(top->child != nullptr) {
-                accessPath.push(top->child);
-            }
-
         }
 
-        return head;
 
+        return result;
+    }
+
+    void helper(Node* head, queue<Node*> &accessPath) {
+        if(head == nullptr) {
+            return;
+        }
+
+        accessPath.push(head);
+        helper(head->child, accessPath);
+        helper(head->next, accessPath);
     }
 };
+
 
 int main() {
     Solution s;
@@ -71,7 +85,12 @@ int main() {
     l0_1->child = l1_0;
     l1_0->child = l2_0;
 
-    cout << s.flatten(l0_0) << endl;
+    Node* result = s.flatten(l0_0);
+
+    while(result!=nullptr) {
+        cout << result->val << "-" << result->prev << "-" << result->next << endl;
+        result = result->next;
+    } 
 
 
     return 0;
