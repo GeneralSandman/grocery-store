@@ -6,56 +6,65 @@
 
 using namespace std;
 
-struct ListNode {
+class Node {
+public:
     int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    Node* next;
+
+    Node() {}
+
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+    }
+
+    Node(int _val, Node* _next) {
+        val = _val;
+        next = _next;
+    }
 };
 
 class Solution {
 public:
-    void reorderList(ListNode* head) {
-
-        queue<ListNode*> q;
-        stack<ListNode*> s;
-
-        int nodeNum = 0;
-
-        while(head!=nullptr) {
-            q.push(head);
-            s.push(head);
-            head = head->next;
-            nodeNum += 1;
+    Node* insert(Node* head, int insertVal) {
+        if(head == nullptr) {
+            Node* node = new Node(insertVal);
+            node->next = node;
+            return node;
         }
 
-        int tmp = 0;
-        ListNode* result = new ListNode();
+        Node* pre = head;
 
-        ListNode* preNode = result;
+        while(pre->next != head) {
 
-        while(tmp!=nodeNum) {
-            ListNode* node;
-            if(tmp %2 == 0) {
-                node = q.front();
-                q.pop();
-            } else {
-                node = s.top();
-                s.pop();
+            Node* left = pre;
+            Node* right = pre->next;
+
+            if(left->val > right->val) {
+                if(left->val < insertVal) {
+                    break;
+                }
+                if(right->val > insertVal) {
+                    break;
+                }
             }
 
-            cout << node->val << endl;
+            if(left->val <= insertVal && insertVal <= right->val) {
+                break;
+            }
 
-            preNode->next = node;
-            preNode = node;
-            tmp += 1;
+            pre = pre->next;
+
         }
 
-        head = result->next;
 
+        Node* node = new Node(insertVal, pre->next);
+        pre->next = node;
+
+        return head;
     }
 };
+
 
 int main() {
     Solution s;
