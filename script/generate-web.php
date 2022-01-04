@@ -38,7 +38,9 @@ function generateGroceryAlgorithm() {
     $contentPattern = <<< contentPattern
 # %s
 
-## link %s
+## link 
+
+%s
 
 ## 题解
 
@@ -47,6 +49,8 @@ function generateGroceryAlgorithm() {
 ```
 
 contentPattern;
+
+    $sidebarContent = "";
 
     foreach($sourceFiles as $sourceFile) {
         echo "$sourceFile\n";
@@ -62,5 +66,10 @@ contentPattern;
         $content = sprintf($contentPattern, $title, $link, $solution);
 
         file_put_contents($destPath."/".$destFileName, $content);
-    } 
+
+        $sidebarContent .= sprintf("* [**%s**](%s)\n", $title, $destPath."/".$destFileName);
+    }
+
+    file_put_contents("../grocery-algorithm/剑指Offer/_sidebar.md", $sidebarContent);
+
 }

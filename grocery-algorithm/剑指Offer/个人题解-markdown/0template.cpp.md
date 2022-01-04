@@ -1,6 +1,8 @@
 # 0template.cpp.md
 
-## link https://leetcode-cn.com/problem-list/e8X3pBZi/
+## link 
+
+https://leetcode-cn.com/problem-list/e8X3pBZi/
 
 ## 题解
 
