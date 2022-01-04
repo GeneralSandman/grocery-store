@@ -9,26 +9,26 @@
 
 
 
-> [!TIP|style:flat|label:剑指Offer（专项突击版）]
+> [!NOTE|style:flat|label:剑指Offer（专项突击版）]
 > 
 > 本书配套代码，请见百度网盘 
 > https://pan.baidu.com/s/1L4g0g-t_hxY9sHvz4Wr5tw 提取码: v3i9 
 > 
+> 
 > 本书在线练习地址
 > https://leetcode-cn.com/problem-list/e8X3pBZi/
 > 
-> ### 力扣（LeetCode）Plus专享折扣
+> 力扣（LeetCode）Plus专享折扣
 > https://datayi.cn/w/JoOGDxWo
 > 
 
 
-> [!TIP|style:flat|label:code-top面试高频的leetcode]
+> [!WARNING|style:flat|label:code-top面试高频的leetcode]
 > https://codetop.cc/home
 
 
-> [!TIP|style:flat|label:pat练习题]
+> [!ATTENTION|style:flat|label:PAT甲级练习题]
 > https://www.patest.cn/practice
-
 
 
 
@@ -40,7 +40,7 @@
 
 
 
-> [!TIP|style:flat|label:数据结构 在线视图 网站]
+> [!NOTE|style:flat|label:数据结构 在线视图 网站]
 > https://visualgo.net/zh
 
 
@@ -48,30 +48,14 @@
 
 
 
-
-csapp全彩高清 500MB版本：
-
-链接: https://pan.baidu.com/s/1ZuXm7QMhS1VSNwdW8cVpXw  密码: 51kw
-
-(有点大，可以先保存后下载）
-
-
-
-计算机系统相关书籍汇总：链接: https://pan.baidu.com/s/1pP0VhEk5HwnbudHkaBb7EQ  密码: nr3g
+> [!TIP|style:flat|label:计算机书籍]
+> csapp全彩高清 500MB版本：
+> 链接: https://pan.baidu.com/s/1ZuXm7QMhS1VSNwdW8cVpXw  密码: 51kw
+> 计算机系统相关书籍汇总：链接: https://pan.baidu.com/s/1pP0VhEk5HwnbudHkaBb7EQ  密码: nr3g
 
 
 
 
 
-
-
-
-
-
-\## 快速排序
-
-
-
-
-
-https://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html
+> [!NOTE|style:flat|label:快速排序]
+> https://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html
