@@ -246,7 +246,6 @@ function generateLeetcodeAction() {
     global $solutionContentPattern;
     $articleMap = array();
     $paths = dfsDir("leetcode");
-    // var_dump(json_encode($paths));
     foreach ($paths as $path => $files) {
 
         if ($path == "leetcode/leetcode-crawler" || $path == "result") {

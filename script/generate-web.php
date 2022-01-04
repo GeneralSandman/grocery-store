@@ -32,10 +32,9 @@ function main()
 
 function generateGroceryAlgorithm() {
 
-    $path = "../grocery-algorithm/剑指Offer/个人题解-源码";
-
-    $files = dfsDir($path);
-
+    $destPath = "../grocery-algorithm/剑指Offer/个人题解-markdown";
+    $sourcePath = "../grocery-algorithm/剑指Offer/个人题解-源码";
+    $sourceFiles = dfsDir($sourcePath);
     $contentPattern = <<< contentPattern
 # %s
 
@@ -43,19 +42,25 @@ function generateGroceryAlgorithm() {
 
 ## 题解
 
+```go
 %s
+```
 
 contentPattern;
 
-    foreach($files as $filePath) {
-        echo "$filePath\n";
+    foreach($sourceFiles as $sourceFile) {
+        echo "$sourceFile\n";
+        $tmp = explode("/", $sourceFile);
 
-        $title = $filePath;
-        $link = "link";
-        $filePointer = fopen($filePath,"rb");
-        $solution = fread($filePointer,filesize($filePath));
-        fclose($fp);
+        $title = $tmp[count($tmp) - 1].".md";
+        $destFileName = $tmp[count($tmp) - 1].".md";
+        $link = "https://leetcode-cn.com/problem-list/e8X3pBZi/";
+        $filePointer = fopen($sourceFile,"rb");
+        $solution = fread($filePointer,filesize($sourceFile));
+        fclose($filePointer);
 
         $content = sprintf($contentPattern, $title, $link, $solution);
+
+        file_put_contents($destPath."/".$destFileName, $content);
     } 
 }

@@ -1,6 +1,6 @@
 * [🎶 **Readme**](grocery-algorithm/readme.md)
 * [⚡  **LeetCode全集（持续更新）**](grocery-algorithm/LeetCode/readme.md)
 * [🧠  **剑指Offer（专项突击版）**](grocery-algorithm/剑指Offer/readme.md)
-   * [- 个人题解](grocery-algorithm/剑指Offer/个人题解/readme.md)
+   * [- 个人题解](grocery-algorithm/剑指Offer/个人题解-markdown/readme.md)
    * [- 题目介绍与官方题解（请在本地查看）](grocery-algorithm/剑指Offer/题目介绍与官方题解/README.md)
 * [👀  **PAT甲级（持续更新）**](grocery-algorithm/PAT甲级/readme.md)
