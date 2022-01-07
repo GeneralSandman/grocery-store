@@ -50,7 +50,7 @@ function generateGroceryAlgorithm() {
 
 contentPattern;
 
-    $sidebarContent = "";
+    $sidebarContent = "# 剑指 offer （专项突破版）\n";
 
     foreach($sourceFiles as $sourceFile) {
         echo "$sourceFile\n";
@@ -70,6 +70,6 @@ contentPattern;
         $sidebarContent .= sprintf("* [**%s**](%s)\n", $title, $destPath."/".$destFileName);
     }
 
-    file_put_contents("../grocery-algorithm/剑指Offer/_sidebar.md", $sidebarContent);
+    file_put_contents("../grocery-algorithm/剑指Offer/个人题解-markdown/readme.md", $sidebarContent);
 
 }
