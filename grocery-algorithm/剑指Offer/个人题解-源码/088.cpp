@@ -17,6 +17,22 @@ public:
     }
 };
 
+class Solution2 {
+public:
+    int minCostClimbingStairs(vector<int>& cost) {
+
+        vector<int> result(2, 0);
+
+        int i = 2;
+        for (i = 2; i <= cost.size(); i++)
+        {
+            result[i%2] = min(result[(i-1)%2] + cost[i-1], result[(i-2)%2] + cost[i-2]);
+        }
+
+        return result[(i+1)%2];
+    }
+};
+
 int main() {
     Solution solution;
 
