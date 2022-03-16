@@ -1,11 +1,10 @@
+/*test.l*/
 %{
-#include<stdio.h>
-#include"bison.h"
+#include <stdio.h>
+#include "y.tab.h"
 void yyerror(char *);
 %}
-
 NUM [1-9]+[0-9]*|0
-
 %%
 
 {NUM}		                return NUM;
@@ -17,6 +16,4 @@ NUM [1-9]+[0-9]*|0
 \n                          return CR;
 [ \t]+                     /* ignore whitespace */;
 .
-
 %%
-

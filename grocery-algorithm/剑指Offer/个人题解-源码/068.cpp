@@ -21,7 +21,7 @@ public:
                 break;
             }
             between = begin + (end - begin) / 2;
-        } while(begin < end);
+        } while(begin <= end);
 
         if(nums[between] == target) {
             return between;

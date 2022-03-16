@@ -24,46 +24,103 @@ public:
     }
 };
 
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
 class Solution {
 public:
-    Node* insert(Node* head, int insertVal) {
-        if(head == nullptr) {
-            Node* node = new Node(insertVal);
-            node->next = node;
-            return node;
+    void reorderList(ListNode* head) {
+
+        
+
+        ListNode* slowNode = head;
+        ListNode* fastNode = head;
+
+        while(fastNode != nullptr && fastNode->next != nullptr) {
+            slowNode = slowNode->next;
+            fastNode = fastNode->next->next;
         }
 
-        Node* pre = head;
 
-        while(pre->next != head) {
+        ListNode* tmp = slowNode->next;
+        while (tmp != nullptr) {
+            cout << "tmp:" << tmp->val << endl;
+            tmp = tmp->next;
+        }
 
-            Node* left = pre;
-            Node* right = pre->next;
 
-            if(left->val > right->val) {
-                if(left->val < insertVal) {
-                    break;
-                }
-                if(right->val > insertVal) {
-                    break;
-                }
-            }
+        
+    }
 
-            if(left->val <= insertVal && insertVal <= right->val) {
+    ListNode* link(ListNode* head1, ListNode* head2) {
+        return nullptr;
+    }
+
+    ListNode* reverseList(ListNode* head) {
+        if(head == nullptr || head->next == nullptr) {
+            return head;
+        }
+
+        ListNode *pre = nullptr;
+        ListNode *curr = head;
+        ListNode *next = head->next;
+
+        while(next != nullptr) {
+            curr->next = pre;
+
+            pre = curr;
+            curr = next;
+            next = next->next;
+        }
+
+        curr->next = pre;
+        return curr;
+    }
+};
+
+
+
+
+
+
+
+class Solution2 {
+public:
+    void reorderList(ListNode *head) {
+        if(head == nullptr) {
+            return;
+        }
+
+        vector<ListNode*> array;
+        ListNode*         tmp = head;
+        while(tmp!=nullptr) {
+            array.push_back(tmp);
+            tmp = tmp->next;
+        }
+
+        int i = 0;
+        int j = array.size() - 1;
+        while(i<j) {
+            array[i]->next = array[j];
+
+            i++;
+            if(i==j) {
                 break;
             }
 
-            pre = pre->next;
-
+            array[j]->next = array[i];
+            j--;
         }
 
-
-        Node* node = new Node(insertVal, pre->next);
-        pre->next = node;
-
-        return head;
+        array[i]->next = nullptr;
     }
 };
+
 
 
 int main() {
@@ -78,7 +135,7 @@ int main() {
     node1->next = node2;
     node2->next = node3;
     node3->next = node4;
-    node4->next = node5;
+    // node4->next = node5;
     node5->next = nullptr;
 
 
