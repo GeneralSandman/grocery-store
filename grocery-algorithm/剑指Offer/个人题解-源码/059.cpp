@@ -2,67 +2,33 @@
 #include <vector>
 #include <map>
 #include <climits>
+#include <queue>
 
 using namespace std;
 
 class KthLargest {
 private:
-    vector<int> data;
-    int dataNum;
+    priority_queue<int, vector<int>, greater<int>> data;
+    int                                            k;
 
-    // 最小堆，只存k个值，【0】就是第k大
-    // 右边比左边大
-
-    void addValue(int val) {
-        if(dataNum > 0 && val <= data[0]) {
-            // 比最小堆的最小值还小
-            // 不需要往里边放了
-            return;
-        }
-
-        data[0] = val;
-        down(0);
-        // for(auto t:data) {
-        //     cout << t << endl;
-        // }
-    }
-
-    void down(int index) {
-        if(index >= data.size()) {
-            return;
-        }
-
-        int leftNodeIndex = index * 2 + 1;
-        int rightNodeIndex = index * 2 + 2;
-
-        if(data[rightNodeIndex] < data[index]) {
-            if(rightNodeIndex < data.size()) {
-                swap(data[rightNodeIndex], data[index]);
-                down(rightNodeIndex);
-            }
-        } else if (data[leftNodeIndex] < data[index]) {
-            if(leftNodeIndex < data.size()) {
-                swap(data[leftNodeIndex], data[index]);
-                down(leftNodeIndex);
-            }
-        }
-    }
 public:
     KthLargest(int k, vector<int>& nums) {
-        dataNum = 0;
-
-        for(auto num:nums) {
-            addValue(num);
+        this->k = k;
+        for(auto t:nums) {
+            add(t);
         }
     }
-    
+
     int add(int val) {
-        addValue(val);
-        return data[0];
+        data.push(val);
+        if(data.size() > this->k) {
+            data.pop();
+        }
+
+        return data.top();
     }
-
-
 };
+
 
 int main() {
     vector<int> init = {4,5,8,2};
