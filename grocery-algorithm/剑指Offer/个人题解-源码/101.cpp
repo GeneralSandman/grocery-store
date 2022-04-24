@@ -9,46 +9,32 @@ using namespace std;
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
-        if(nums.size()<2) {
+        int sum = 0;
+        for(auto t:nums) {
+            sum += t;
+        }
+
+        if(sum%2) {
             return false;
         }
 
-        vector<int> array = nums;
-        sort(array.begin(), array.end());
-        
-        vector<int> leftSum(nums.size(), 0);
-        vector<int> rightSum(nums.size(), 0);
+        int target = sum / 2;
 
-        int sum = 0;
-        for(int i =0;i<nums.size();i++) {
-            sum += nums[i];
-            leftSum[i] = sum;
-        }
+        vector<vector<bool> > dp(nums.size() + 1, vector<bool>(target + 1,false ));
 
-        sum = 0;
-        for(int i =nums.size()-1;i>=0;i--) {
-            sum += nums[i];
-            rightSum[i] = sum;
-        }
+        dp[0][0] = true;
 
-        int i =1;
-        int j =1;
-
-        while(true) {
-
-            int tmpA = leftSum[j] - leftSum[i];
-            int tmpB = leftSum[i] + rightSum[j];
-
-            if(tmpA > tmpB) {
-                i++;
-            } else if (tmpA < tmpB) {
-                j++;
-            } else {
-                return true;
+        for (int i = 1;i<dp.size();i++) {
+            for (int j = 0; j < target + 1; j++) {
+                dp[i][j] = dp[i - 1][j];
+                if(!dp[i][j] && j - nums[i - 1]>=0) {
+                    dp[i][j] = dp[i - 1][j - nums[i - 1]];
+                }
             }
         }
 
-        return false;
+
+        return dp[dp.size()-1][target];
     }
 };
 

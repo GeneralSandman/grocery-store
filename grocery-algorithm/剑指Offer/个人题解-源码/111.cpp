@@ -28,7 +28,11 @@ public:
     }
 
     double helper(map<string,map<string,double >> &graph, string from, string to, map<string, bool> &visited) {
-        if(from == to) {
+        if(visited.find(from) == visited.end()) {
+            return 1;
+        }
+        visited[from] = true;
+        if (from == to) {
             return 1;
         }
 
@@ -39,20 +43,47 @@ public:
         }
 
         auto nextNodes= nextIter->second;
-        for(auto nextNode: nextNodes) {
-            double result = helper(graph, nextNode->first, to, visited);
-            if (result != -1) {
-                
+        for (auto t = nextNodes.begin(); t != nextNodes.end(); t++) {
+            double result = helper(graph, t->first, to, visited);
+            if(result == -1) {
+                return -1;
             }
+            return result * t->second;
         }
-
         return -1;
-
     }
 };
 
 int main() {
-    Solution s;
+    Solution soluation;
+
+    vector<vector<string>> equations = {
+        {"a", "b"},
+        {"b", "c"},
+    };
+
+
+    vector<double> values = {2.0, 3.0};
+
+    vector<vector<string>> queries = {
+        {"a", "a"},
+        {"a", "b"},
+        {"b", "a"},
+
+        // {"b", "b"},
+        // {"b", "c"},
+        // {"c", "b"},
+
+        {"x", "x"},
+    };
+
+
+    vector<double>
+        result = soluation.calcEquation(equations, values, queries);
+
+    for (auto t:result) {
+        cout << "result " << t << endl;
+    }
 
     return 0;
 }
