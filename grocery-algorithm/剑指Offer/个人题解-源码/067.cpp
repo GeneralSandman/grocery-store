@@ -25,7 +25,7 @@ class Solution {
             for (auto num : nums)
             {
                 TrieNode *current = root;
-                for (int i = 0; i < 32;i++) {
+                for (int i =31; i >= 0; i--) {
                     int index = (num >> i) & 1;
                     if (current->childern[index] == nullptr)
                     {
@@ -45,17 +45,19 @@ public:
         for (auto num : nums){
             TrieNode *current = root;
             int tmp = 0;
-            for (int i = 0; i < 32; i++)
-            {
-                int index = (num >> i) & 1;
-                index = (index == 0) ? 1 : 0;
-                if (current->childern[index] == nullptr)
+
+            for (int i = 31; i >= 0; i--) {
+                int origin_index = (num >> i) & 1;
+                int res_index = (origin_index == 1) ? 0 : 1;
+
+                if (current->childern[res_index] != nullptr)
                 {
-                    current->childern[index] = new TrieNode();
+                    tmp = (tmp << 1) + 1;
+                    current = current->childern[res_index];
                 } else {
-                    
+                    tmp = (tmp << 1);
+                    current = current->childern[origin_index];
                 }
-                current = current->childern[index];
             }
 
             result = max(result, tmp);

@@ -34,20 +34,19 @@ public:
             return;
         }
 
-        dfs(candidates, target, index+1, currentPath, result);
+        dfs(candidates, target, getNextIndex(candidates, index), currentPath, result);
 
         currentPath.push_back(candidates[index]);
-        // for(int i=index+1;i<candidates.size();i+=1) {
-        //     if(candidates[i] != candidates[index]) {
-                dfs(candidates, target-candidates[index], index+1, currentPath, result);
-        //     }
-        // }
+        dfs(candidates, target-candidates[index], index+1, currentPath, result);
         currentPath.erase(--currentPath.end());
-        // 不需要删除
-        // 因为是传值，不是传引用，
-        // 要是 currentPath 是引用的话，就需要删除
-        // 如果不用引用 会频繁的创建空间 超时
-        // currentPath.erase(--currentPath.end());
+    }
+
+    int getNextIndex(vector<int>& candidates, int index) {
+        int result = index;
+        while(result < candidates.size() && candidates[result] == candidates[index]) {
+            result ++;
+        }
+        return result;
     }
 };
 
