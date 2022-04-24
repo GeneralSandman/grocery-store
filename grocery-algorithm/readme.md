@@ -59,3 +59,8 @@
 
 > [!NOTE|style:flat|label:快速排序]
 > https://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html
+
+
+
+> [!NOTE|style:flat|label:并查集]
+> https://leetcode-cn.com/problems/redundant-connection/solution/zui-rong-yi-li-jie-de-bing-cha-ji-xiang-abg0f/
