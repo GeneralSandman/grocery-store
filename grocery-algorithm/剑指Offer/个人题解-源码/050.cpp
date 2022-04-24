@@ -20,18 +20,13 @@ public:
         int result = 0;
         vector<int> debug;
         helper(root, 0, 0, targetSum, result, debug);
-        return result/4;
+        return result;
     }
 
     void helper(TreeNode* node, int pathSum, int pathLength, int targetSum, int &result, vector<int> debug) {
 
         if(pathSum == targetSum && pathLength > 0) {
             result += 1;
-
-            for(auto t:debug) {
-                cout << t << " ";
-            }
-            cout << endl;
             return;
         }
 
@@ -39,23 +34,27 @@ public:
             return;
         }
 
+
+
         // 这个节点是中间路径中的一个
+        if(pathLength > 1) {
         pathSum += node->val;
-        debug.push_back(node->val);
         helper(node->left, pathSum, pathLength + 1,targetSum, result, debug);
         helper(node->right, pathSum, pathLength + 1,targetSum, result, debug);
         pathSum -= node->val;
+        }
 
         // 从这个节点 开始
-        pathSum = node->val;
-        debug.clear();
-        debug.push_back(node->val);
-        helper(node->left, pathSum, 1, targetSum, result, debug);
-        helper(node->right, pathSum, 1, targetSum, result, debug);
+        // if(pathLength >= 1) {
+            pathSum = node->val;
+            debug.push_back(node->val);
+            helper(node->left, pathSum, 1, targetSum, result, debug);
+            helper(node->right, pathSum, 1, targetSum, result, debug);
+        // }
     }
 };
 
-int main() {
+int test1() {
     Solution s;
 
     TreeNode *l0 = new TreeNode(10);
@@ -90,19 +89,57 @@ int main() {
     return 0;
 }
 
-int main1() {
+int test2() {
     Solution s;
 
-    TreeNode *l0 = new TreeNode(0);
+    TreeNode *l0 = new TreeNode(1);
 
-    TreeNode *l1_0 = new TreeNode(1);
-    TreeNode *l1_1 = new TreeNode(1);
+    TreeNode *l1_0 = new TreeNode(-2);
+    TreeNode *l1_1 = new TreeNode(-3);
 
+    TreeNode *l2_0 = new TreeNode(1);
+    TreeNode *l2_1 = new TreeNode(3);
+    TreeNode *l2_2 = new TreeNode(-2);
+    TreeNode *l2_3 = nullptr;
+
+    TreeNode *l3_0 = new TreeNode(-1);
+    
+    l0->left = l1_0;
+    l0->right = l1_1;
+
+    l1_0->left = l2_0;
+    l1_0->right = l2_1;
+    l1_1->left = l2_2;
+    l1_1->right = l2_3;
+
+    l2_0->left = l3_0;
+
+    cout << s.pathSum(l0, 3) << endl;
+
+    return 0;
+}
+
+
+int test3() {
+
+    Solution s;
+
+    TreeNode *l0 = new TreeNode(-2);
+
+    TreeNode *l1_0 = nullptr;
+    TreeNode *l1_1 = new TreeNode(-3);
 
     l0->left = l1_0;
     l0->right = l1_1;
 
-    cout << s.pathSum(l0, 0) << endl;
+    cout << s.pathSum(l0, -3) << endl;
+    return 0;
+}
+
+int main() {
+    test1();
+    test2();
+    test3();
 
     return 0;
 }
