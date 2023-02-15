@@ -1,5 +1,3 @@
-* [Readme](grocery-blog/readme.md)
-
 * [流媒体服务器Monibuca学习笔记](grocery-blog/043/流媒体服务器Monibuca学习笔记.md)
 
 * [工作能力强的人有哪些共同特征](grocery-blog/042/工作能力强的人有哪些共同特征.md)
