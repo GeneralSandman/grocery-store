@@ -1,4 +1,0 @@
-- Depth-first Search
-- Breadth-first Search
-- Graph
-- Topological Sort

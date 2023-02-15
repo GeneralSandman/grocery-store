@@ -1,7 +1,3 @@
 * [⚡  **网站简介**]()
-* [⚡  **算法 Algorithm**](grocery-algorithm/readme.md)
 * [🔧  **文章 Blog**](grocery-blog/readme.md)
-* [👀  **书籍 Book**](grocery-book/readme.md)
-* [📎  **笔记 Note**](grocery-note/readme.md)
 * [💻  **全类存档**]()
-* [🌐  **分享本站**]()

@@ -1,3 +1,0 @@
-- Stack
-- Tree
-- Breadth-first Search
